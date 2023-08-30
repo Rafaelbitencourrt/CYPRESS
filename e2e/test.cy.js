@@ -16,6 +16,11 @@ describe('My first Test', function(){
                 cy.wrap($el).find('button').click()
             }
         })
+
+        // assert if logo text is correctly displayed
+        //cy.get('.brand').should('have.text', 'GREENKART')
+
+        //THIS IS TO PRINT IN LOGS
         cy.get('.brand').then(function(logoelement){
             cy.log(logoelement.text())
         })
