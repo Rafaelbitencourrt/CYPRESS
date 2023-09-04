@@ -37,6 +37,10 @@ describe('Checkbox', function(){
         ///radio buttons
         cy.get('[value="radio2"]').check().should('be.checked')
 
+        ////pop-up
+
+        
+
     })
 
     
