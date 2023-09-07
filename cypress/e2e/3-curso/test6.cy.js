@@ -21,6 +21,10 @@ describe('Alerts', function(){
 
         })
 
+        cy.get('div.mouse-hover-content').invoke('show')
+        cy.contains('Top').click({force:true})
+        cy.url().should('includes','top')
+
     })
 
     
