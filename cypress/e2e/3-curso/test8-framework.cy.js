@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+import homePage from "../../pages/curso-cypress/homePage"
+
 
 describe('Alerts', function(){
 
@@ -14,13 +16,13 @@ describe('Alerts', function(){
     it('Test Ckeckbox', function(){
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
 
-        cy.get('input[name="name"]:nth-child(2)').type(this.data.name)
-        //cy.get('#exampleFormControlSelect1').select('Female')
-        cy.get('select').select(this.data.sexo)
-        cy.get(':nth-child(4) > .ng-untouched').should('have.value', this.data.name)
+        homePage.typeUsername(this.data.name)
+        homePage.selectGender(this.data.sexo)
+        homePage.elements.dataBinding().should('have.value', this.data.name)
+        //Verificando o numero minimo de caracteres em um campo
         cy.get('input[name="name"]:nth-child(2)').should('have.attr','minlength','2')
-        cy.get('#inlineRadio3').should('be.disabled')
-        cy.get(':nth-child(2) > .nav-link').click()
+        homePage.elements.statusEmployment().should('be.disabled')
+        homePage.elements.menuShop().click()
         cy.selectProduct('Blackberry')
     })
 
