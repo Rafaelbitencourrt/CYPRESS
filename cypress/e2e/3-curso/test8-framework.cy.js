@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import homePage from "../../pages/curso-cypress/homePage"
+import productPage from "../../pages/curso-cypress/productPage"
 
 
 describe('Alerts', function(){
@@ -14,6 +15,7 @@ describe('Alerts', function(){
     })
 
     it('Test Ckeckbox', function(){
+        Cypress.config('defaultCommandTimeout', 8000)
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
 
         homePage.typeUsername(this.data.name)
@@ -23,7 +25,14 @@ describe('Alerts', function(){
         cy.get('input[name="name"]:nth-child(2)').should('have.attr','minlength','2')
         homePage.elements.statusEmployment().should('be.disabled')
         homePage.elements.menuShop().click()
-        cy.selectProduct('Blackberry')
+
+        this.data.productName.forEach(function(element){
+            cy.selectProduct(element)
+        })
+
+        productPage.clickCheckOutButton()
+        cy.get(':nth-child(4) > :nth-child(5) > .btn').click()
+       
     })
 
     
