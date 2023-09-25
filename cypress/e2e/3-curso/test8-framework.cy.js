@@ -31,8 +31,18 @@ describe('Alerts', function(){
         })
 
         productPage.clickCheckOutButton()
+        cy.get('tr td:nth-child(4) strong').each(($el, index, $list) =>{
+            cy.log($el.text())
+        })
         cy.get(':nth-child(4) > :nth-child(5) > .btn').click()
-       
+        cy.get('#country').type('India')
+        cy.get('.suggestions > ul > li > a').click()
+        cy.get('#checkbox2').check({force:true})
+        cy.get('.ng-untouched > .btn').click()
+        cy.get('.alert').then(function(element){
+            const actualText = element.text();
+            expect(actualText.includes('Succes')).to.be.true
+        })
     })
 
     
