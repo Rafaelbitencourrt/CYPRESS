@@ -4,6 +4,11 @@
     "cypress-iframe": "^1.0.1"
   },
   "scripts": {
+    "test" : "node_modules\\.bin\\cypress run",
+    "headTest" : "npm run test -- -- headed",
+    "chromeTest":"npm run test -- --browser chrome",
+    "edgeTest":"npm run test -- --browser edge",
+    "firefoxTest":"npm run test -- --browser firefox",
     "cypress-dashboard-run": "npx cypress run --record --key=4e41f3e1-02bb-482d-b3c3-2c1735ac5a6b"
   }
 }
